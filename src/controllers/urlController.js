@@ -9,7 +9,14 @@ const createShortUrl = async (req, res) => {
   try {
     const originalUrl = req.body?.originalUrl;
     const customCode = req.body?.customCode;
-    const expiresAt = req.body?.expiresAt;
+    const expiresAt = req.body?.expiresAt || null;
+
+    if (expiresAt && isNaN(new Date(expiresAt))) {
+  return res.status(400).json({
+    success: false,
+    message: 'Invalid expiration date'
+  });
+}
 
     // validation
     if (!originalUrl) {
