@@ -90,7 +90,7 @@ const createShortUrl = async (req, res) => {
       data: result.rows[0],
     });
   } catch (error) {
-    logger.error(error.message);
+    logger.error(JSON.stringify(error));
 
     return res.status(500).json({
       success: false,
@@ -173,7 +173,7 @@ const redirectUrl = async (req, res) => {
 
     return res.redirect(url.original_url);
   } catch (error) {
-    logger.error(error.message);
+    logger.error(JSON.stringify(error));
 
     return res.status(500).json({
       success: false,
@@ -199,7 +199,7 @@ const getAllUrls = async (req, res) => {
     });
 
   } catch (error) {
-    logger.error(error.message);
+    logger.error(JSON.stringify(error));
 
     return res.status(500).json({
       success: false,
@@ -238,7 +238,7 @@ const deleteUrl = async (req, res) => {
     });
 
   } catch (error) {
-    logger.error(error.message);
+    logger.error(JSON.stringify(error));
 
     return res.status(500).json({
       success: false,
@@ -299,7 +299,7 @@ const updateUrl = async (req, res) => {
 
   } catch (error) {
 
-    logger.error(error.message);
+    logger.error(JSON.stringify(error));
 
     return res.status(500).json({
       success: false,
@@ -338,7 +338,7 @@ const getUrlAnalytics = async (req, res) => {
       data: result.rows[0]
     });
   } catch (error) {
-    logger.error(error.message);
+    logger.error(JSON.stringify(error));
 
     return res.status(500).json({
       success: false,
@@ -378,7 +378,7 @@ const generateQrCode = async (req, res) => {
       qrCode: qrCodeImage
     });
   } catch (error) {
-    logger.error(error.message);
+    logger.error(JSON.stringify(error));
 
     return res.status(500).json({
       success: false,

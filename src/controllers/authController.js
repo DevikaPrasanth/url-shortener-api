@@ -46,7 +46,7 @@ const registerUser = async (req, res) => {
       data: newUser.rows[0],
     });
   } catch (error) {
-    logger.error(error.message);
+    logger.error(JSON.stringify(error));
 
     return res.status(500).json({
       success: false,
@@ -117,7 +117,7 @@ const loginUser = async (req, res) => {
       }
     });
   } catch (error) {
-    logger.error(error.message);
+    logger.error(JSON.stringify(error));
 
     return res.status(500).json({
       success: false,
